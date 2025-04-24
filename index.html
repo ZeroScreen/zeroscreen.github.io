@@ -1,1 +1,316 @@
-<p>hello world!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroScreen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --dark-blue: #0a1a2b;
+            --blue: #2563eb;
+            --purple: #6d28d9;
+            --yellow: #fbbf24;
+            --gray: #1f2937;
+            --light-gray: #6b7280;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--black);
+            color: white;
+            line-height: 1.6;
+        }
+        
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--black) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 10rem;
+            margin: 0;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            background: linear-gradient(to right, white, #dddddd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .caption {
+            font-size: 1.8rem;
+            color: var(--light-gray);
+            margin-top: 20px;
+            font-weight: 400;
+        }
+        
+        .content-section {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+        
+        .description {
+            padding: 40px;
+            background-color: var(--gray);
+            border-radius: 16px;
+            border: 1px solid var(--light-gray);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .screenshots-container {
+            max-width: 1400px;
+            margin: 40px auto 60px;
+            padding: 0 40px;
+        }
+        
+        .screenshots {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+        }
+        
+        .screenshots img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 600px;
+            border-radius: 40px;
+            border: 2px solid;
+            object-fit: contain;
+        }
+        
+        /* IMAGE PLACEHOLDERS - REPLACE THESE WITH ACTUAL IMG TAGS */
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: var(--dark-blue);
+            border: 2px dashed var(--purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-gray);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        
+        .image-placeholder::after {
+            content: "SCREENSHOT PLACEHOLDER " attr(data-number);
+            position: absolute;
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 40px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .guidebook-btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--dark-blue);
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 40px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .guidebook-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .testimonials {
+            background-color: var(--gray);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .testimonial-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .testimonial {
+            width: 30%;
+            min-width: 300px;
+            padding: 30px;
+            background-color: var(--dark-blue);
+            border-radius: 12px;
+            border-left: 4px solid var(--yellow);
+            text-align: left;
+        }
+        
+        .testimonial p:first-child {
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial p:last-child {
+            font-weight: 700;
+            color: var(--yellow);
+        }
+        
+        .story {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+        
+        .story h2 {
+            font-size: 2.5rem;
+            color: var(--yellow);
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: white;
+            margin-top: 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px;
+            background-color: var(--dark-blue);
+            color: var(--light-gray);
+            border-top: 1px solid var(--gray);
+        }
+        
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 4.5rem;
+            }
+            
+            .testimonial {
+                width: 45%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .testimonial {
+                width: 100%;
+            }
+            
+            .screenshots img {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ZeroScreen</h1>
+        <div class="caption">Combatting screen addiction and assisting individuals in regaining control over their time.</div>
+        <a href="#download" class="download-btn">Download Now</a>
+        <a href="#guidebook" class="guidebook-btn">Open Guidebook</a>
+        <!-- HERO IMAGE PLACEHOLDER - REPLACE WITH ACTUAL IMAGE -->
+        <img src="assets/zeroscreenlogo.png" border="5" alt="Image" style="display: block; margin: 40px auto 0; max-width: 600px; border-radius: 150px;">
+    </header>
+    
+    <div class="content-section">
+        <div class="description">
+            <h2>Minimalist app for a minimalist experience</h2>
+            <p>Our problem is that teens and young adults are addicted to screens and technology.</p>
+            
+            <p>Devices offer a constant stream of notifications, updates, and entertainment that can be difficult to ignore. ZeroScreen helps uers avoid these in helathy ways. </p>
+            
+            <p>Many teens do not even realize that they are addicted to screens, as social media has become an integral part of many teens' social lives. Addressing this problem would be highly beneficial to teens currently struggling with screen addiction since it would reduce the anxiety and stress induced by social media and screens. The primary demographic of people that are affected by screen addiction are teenagers, as their brains are more susceptible to becoming addicted, leading to issues in development (Azaret, 2024). Ultimately, screen addiction is a major issue in teens because it takes up much of their time and causes unfavorable mental health issues.</p>
+            
+            <h3 style="color: var(--yellow); margin-top: 30px;">KEY FEATURES:</h3>
+            <ul style="line-height: 1.8;">
+                <li><strong>Screen time logging: </strong> Easy end-of-day logging</li>
+                <li><strong>Gamified approach: </strong> Keeps users engaged</li>
+                <li><strong>Score sharing:</strong> Share score with friends to stay motivated</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="screenshots-container">
+        <div class="screenshots">
+            <img src="assets/image4.png" border="2" alt="App Screenshot">
+            <img src="assets/image1.png" border="2" alt="App Screenshot">
+            <img src="assets/image6.png" border="2" alt="App Screenshot">
+            <img src="assets/image5.png" border="2" alt="App Screenshot">
+        </div>
+    </div>
+    
+    <div class="testimonials">
+        <h2>User testimonies</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <p>"The app was good and I really enjoyed reading your research! The app should definitely be on the app store."</p>
+                <p>- Ian Cho</p>
+            </div>
+            <div class="testimonial">
+                <p>"The app's approach was really good!'"</p>
+                <p>- Colton Takai</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="story">
+        <h2>Our story</h2>
+        <p>Our team is interested in this problem because like most teens, we spend a lot of time consuming digital content and playing mobile games. We ourselves know and may sometimes feel addicted to screens and we want to find out what causes the addiction. Furthermore, we would like to research some ways to reduce screen usage and find other activities to substitute for screen usage. Our team members have social media and play video games, and we often lose track of how long we have been on screens. At first, it may feel fun as an escape from reality, but the moment we turn off the screen, all that time feels wasted and we feel regret. Some of us have and might even in the future regret not doing something more memorable, fun and better for ourselves. The more time we spend on our screens, the less time we will have to study, socialize, and make meaningful contributions to our future.</p>
+        
+        <!-- TEAM IMAGE PLACEHOLDER -->
+        <a href="#link" class="image-placeholder" data-number="(Team Photo)" style="margin: 40px 0;"></a>
+        
+        <p>ZeroScreen consists of three parts:</p>
+        <ol style="line-height: 1.8;">
+            <li><strong>Guidebook:</strong> Easy-to-follow information</li>
+            <li><strong>Application:</strong> Gamified approach to screen reduction</li>
+            <li><strong>Presentation:</strong> Information on screen addiction</li>
+        </ol>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 ZEROSCREEN. ALL RIGHTS RESERVED.</p>
+    </footer>
+</body>
+</html>
